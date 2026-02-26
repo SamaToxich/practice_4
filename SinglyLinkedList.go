@@ -36,8 +36,19 @@ func (l *SinglyLinkedList[T]) Delete(value T) bool {
         l.Head = l.Head.Next
         return true
     }
-
+    prev := l.Head
+    current := l.Head.Next
+    for current != nil {
+        if current.Value == value {
+            prev.Next = current.Next
+            return true
+        }
+        prev = current
+        current = current.Next
+    }
     return false
 }
+
+
 
 
