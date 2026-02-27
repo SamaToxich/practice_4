@@ -1,22 +1,24 @@
 package main
 
-type SinglyNode[T any] struct {
+import "fmt"
+
+type SinglyNode[T comparable] struct {
     Value T
     Next *SinglyNode[T]
 }
 
-type SinglyLinkedList[T any] struct {
+type SinglyLinkedList[T comparable] struct {
     Head *SinglyNode[T]
 }
 
 func (l *SinglyLinkedList[T]) InsertFront(value T) {
-    node := &SinglyNode[T]{Value:value}
+    node := &SinglyNode[T]{Value: value}
     node.Next = l.Head
     l.Head = node
 }
 
 func (l *SinglyLinkedList[T]) InsertBack(value T) {
-    node := &SinglyNode[T]{Value:value}
+    node := &SinglyNode[T]{Value: value}
     if l.Head == nil {
         l.Head = node
         return
@@ -49,6 +51,11 @@ func (l *SinglyLinkedList[T]) Delete(value T) bool {
     return false
 }
 
-
-
-
+func (l *SinglyLinkedList[T]) Display() {
+    current := l.Head
+    for current != nil {
+        fmt.Print(current.Value, " ")
+        current = current.Next
+    }
+    fmt.Println()
+}
