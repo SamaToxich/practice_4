@@ -47,7 +47,7 @@ func TreeTest() {
 		tree.Insert(v)
 	}
 
-	fmt.Print("In-order: ")
+	fmt.Print("\nIn-order: ")
 	tree.InOrder() // 2 3 4 5 6 7 8
 
 	fmt.Print("Pre-order: ")
@@ -60,9 +60,49 @@ func TreeTest() {
 	fmt.Println("Search 9:", tree.Search(9))
 }
 
+func convertTest() {
+	examples := []string{
+		"III",       // 3
+		"IV",        // 4
+		"IX",        // 9
+		"LVIII",     // 58
+		"MCMXCIV",   // 1994
+		"MMXXIII",   // 2023
+		"",          // 0
+		"XIV",       // 14
+		"CDXLIV",    // 444
+		"MMMCMXCIX", // 3999
+		"ABC",       // invalid
+	}
+
+	fmt.Println("\nConversion results:")
+	for _, ex := range examples {
+		res := Convert(ex)
+		fmt.Printf("%-10s -> %d\n", ex, res)
+	}
+}
+
+func RandomMatrixTest() {
+    rows := 4
+    cols := 5
+    minVal := 10
+    maxVal := 50
+
+    matrix := RandomMatrix(rows, cols, minVal, maxVal)
+    fmt.Println("\nСгенерированная матрица:")
+    for i := 0; i < rows; i++ {
+    	for j := 0; j < cols; j++ {
+    		fmt.Printf("%3d ", matrix[i][j])
+    	}
+    fmt.Println()
+    }
+}
+
 func main() {
 	StackTest()
 	QueueTest()
-    LinkedListTest()
-    TreeTest()
+	LinkedListTest()
+	TreeTest()
+	convertTest()
+    RandomMatrixTest()
 }
